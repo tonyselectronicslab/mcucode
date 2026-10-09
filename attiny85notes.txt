@@ -1,0 +1,44 @@
+ATTiny85 as digispark or normal ? Normal "no bootloader" is fewest components 
+
+boards https://github.com/spencekonde/attinycore
+
+pinout 
+
+reset	 *	VCC
+xtal		SCK
+xtal		MISO
+GND		MOSI
+
+"bootloader" just configures fuses 
+
+5V to pin 	8 
+gnd  		4 
+53 ** 10	1
+51 mosi 	5
+50 miso		6
+52 sck		7
+
+10uf reset gnd ( after ISP sketch ) 
+
+Tools > board > attiny85 
+	> processor > attiny85
+	> clock > 8mhz internal 		
+	> programmer > arduino as isp
+	> burn bootloader 
+
+attiny85 limited to 5 output pins ( reset pin 1 , vcc , gnd ) 
+
+74hc595 is "shift register" ( serial to parallel )
+
+pin
+1 bit1 led    *		16 5V
+2 bit2 			15 bit0
+3 bit3			14 DS > pin5 attiny85
+4 bit4			13 OE > 0V
+5 bit5			12 ST_CP > pin6 attiny85
+6 bit6			11 SH_CP > pin7 attiny84
+7 bit7			10 MR > 5V	
+8 GND			9 Q7 to next 74hc595 
+
+
+
